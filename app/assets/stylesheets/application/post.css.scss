@@ -1,0 +1,147 @@
+#post{
+	min-height: $content-min-height;
+
+	$local-height: 335px;
+
+	margin-top: 30px;
+	margin-bottom: 150px;
+
+	color: $color-grey-light;
+	font-family: $font-title;
+	font-size: 16px;
+
+	line-height: 25px;
+
+	.space{
+		height: 20px;
+	}
+
+	.images{
+		.big{
+			height: $local-height;
+
+			div{
+				background: no-repeat center center;
+				width: 100%;
+				height: $local-height;
+				@include background-size(auto $local-height);
+			}
+		}
+		.thumb{
+			margin-top: 30px;
+
+			a{
+				display: inline-block;
+				float: left;
+				margin-right: 8px;
+
+				width: 160px;
+				height: 120px;
+
+				border: 1px solid $color-border;
+				@include border-radius(2px);
+				background: no-repeat center center;
+				@include background-size(auto 120px);
+
+				.filter{
+					width: 100%;
+					height: 100%;
+
+					background-color: #000;
+
+					@include opacity(0);
+					@include transition(opacity 0.2s);
+
+					&:hover{
+						@include opacity(0.15);
+					}
+				}
+			}
+
+			a:hover, a.active{
+				border-color: $color-blue;
+			}
+		}
+	}
+
+
+	.details{
+		padding: 0 20px;
+		background-color: white;
+		height: $local-height;
+
+		@include border-radius(2px);
+		@include box-shadow(0px 0px 1px 0px);
+
+		h1{
+			font-family: $font-content;
+			font-size: 20px;
+
+			color: $color-black;
+
+			// line-height: $button-height;
+			height: $button-height;
+			width: 350px;
+
+			display: table-cell;
+			vertical-align: middle;
+
+			@include text-shadow(1px 1px 1px rgba(0,0,0,0.1));
+		}
+
+		div span{
+			color: $color-black;
+			float: right;
+			font-family: $font-title-bold;
+		}
+
+		.separator{
+			margin-top: 23px;
+			margin-bottom: 13px;
+			height: 1px;
+			background-color: $color-border;
+		}
+
+		.amount{
+			color: $color-black;
+			float: right;
+			text-align: right;
+
+			.price{
+				font-family: $font-content;
+				font-size: 20px;
+
+				@include text-shadow(1px 1px 1px rgba(0,0,0,0.1));
+			}
+
+			.negotiable{
+				line-height: 13px;
+				font-size: 13px;
+			}
+		}
+
+	}
+
+	.contact{
+		span{
+			display: block;
+			
+			padding-left: 30px;
+		}
+
+		a{
+			@include text-shadow(1px 1px 1px rgba(0,0,0,0.2));
+		}
+	}
+
+	.description{
+		margin-top: 30px;
+
+		h4{
+			color: $color-black;
+		}
+		p{
+			margin-top: 5px;
+		}
+	}
+}

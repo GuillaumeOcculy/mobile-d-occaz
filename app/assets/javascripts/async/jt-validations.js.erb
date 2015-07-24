@@ -1,0 +1,157 @@
+;(function($){
+
+    'use strict';
+
+	$('.jt-validation-number').on('keypress', function(e){
+		var regex = new RegExp("^[0-9]+$");
+		var key = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+		if(!regex.test(key)){
+		   e.preventDefault();
+		   return false;
+		}
+
+		return true;
+	});
+
+    $('input,select,textarea').on('jt:validate', function(e, options){
+    	var $input = $(this);
+    	var isValid = true;
+
+    	if(!options){
+    		options = {};
+    	}
+
+    	if($input.attr('required')){
+    		if($input.val().length == 0){
+    			isValid = false;
+    		}
+    	}
+    	if(isValid && $input.hasClass('jt-validation-email')){
+    		var regex = new RegExp(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+    		if(!regex.test($input.val())){
+    			isValid = false;
+    			options.errorMessage = "<%= I18n.t('activemodel.errors.messages.invalid_email_address') %>";
+    		}
+    	}
+    	if(isValid && $input.hasClass('jt-validation-number')){
+    		var regex = new RegExp("^[0-9]+$");
+    		if(!regex.test($input.val())){
+    			isValid = false;
+    			options.errorMessage = "<%= I18n.t('errors.messages.not_a_number') %>";
+    		}
+    	}
+    	if(isValid && $input.hasClass('jt-validation-imei')){
+    		if($input.val().length != 15){
+    			isValid = false;
+    			options.errorMessage = 'doit être composé de 15 chiffres';
+    		}
+    		else if(!validateIMEI($input.val())){
+    			isValid = false;
+    			options.errorMessage = "<%= I18n.t('errors.messages.invalid') %>";
+    		}
+    	}
+    	if($input.hasClass('jt-validation-autocomplete')){
+    		return;
+    	}
+
+    	if(!$input.attr('required') && $input.val().length == 0){
+			isValid = null;
+    	}
+
+    	updateInputState($input, isValid, options);
+    });
+
+    function updateInputState($input, isValid, options){
+        var element = $input.parent();
+
+        // Detecte erreur généré par Rails
+        // N'affiche pas d'erreur au chargement de la page
+        if(options && options.firstTime === true){
+        	if(element.hasClass('error') || isValid === false){
+        		return;
+        	}
+        }
+
+        setInputState($input, isValid, options.errorMessage);
+    }
+
+    $(document).on('autocomplete:data_changed', function(e, data){
+        var $input = $('.jt-validation-autocomplete').first();
+        var isFirstTime = !$input.parent().hasClass('error') && !$input.parent().hasClass('success');
+
+        if(data && data.lat){
+        	setInputState($input, true);
+        }
+        else if(!isFirstTime){
+        	setInputState($input, false);
+        }
+    });
+
+    function setInputState($input, state, errorMessage){
+        $input.parents('.input').removeClass('error').removeClass('success');
+        $input.parents('.row').find('.error-message,.success-message').remove();
+
+        var element = $input.parent();
+        var errorElement = $input.parents('.row').children().last();
+
+        if(state === false){
+            element.addClass('error');
+            if(errorMessage){
+            	errorElement.html('<div class="error-message"></div>');
+            	errorElement.find('div').text(errorMessage);
+            }
+            else{
+            	errorElement.html('');		
+        	}
+        }
+        else if(state === true){
+            element.addClass('success');
+            errorElement.html('<div class="success-message"></div>');
+        }
+    }
+ 
+    /***************************/
+
+    // Formule de Luhn
+    function validateIMEI(value, options){
+    	var numbers = value.split('');
+    	for(var i = 0; i < numbers.length; ++i){
+    		numbers[i] = Number(numbers[i]);
+    	}
+
+    	var sum = 0;
+
+    	for(var i = 0; i < numbers.length; ++i){
+    		var number = numbers[numbers.length - 1 - i];
+
+    		// Si position impair en partant de la droite
+    		if(i % 2 == 1){
+    			number *= 2;
+    			if(number >= 10){
+    				number = (number - 10) + 1;
+    			}
+    		}
+
+    		sum += number;
+    	}
+
+    	return (sum % 10 == 0);
+    }
+
+    /***************************/
+
+    (function(){
+		$('.new-post-form').find('input[id],select,textarea').each(function(){
+		    $(this).trigger('jt:validate', { firstTime: true });
+		});
+
+	    $('.new-post-form').find('input[id],select,textarea').on('input', function(){
+	        $(this).trigger('jt:validate');
+	    });
+
+	    $('.new-post-form').find('input[id],select,textarea').on('change', function(){
+	        $(this).trigger('jt:validate');
+	    });
+    })();
+
+})(jQuery);

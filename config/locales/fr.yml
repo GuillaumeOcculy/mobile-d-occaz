@@ -1,0 +1,21 @@
+fr:
+  home:
+    contact:
+      title: Contact
+      content: Envoyez nous un message pour toute demande.
+    home:
+      title: Près de chez toi
+    index:
+      title: Tu cherches un nouveau téléphone ou tu veux vendre le tiens, dépose une annonce <span class="orange">gratuitement</span> ou trouve le mobile de ton choix!
+  posts:
+    contact:
+      content: "Envoyer un message à %{name} pour son annonce concernant un %{product}."
+    edit:
+      title: Déposer une annonce
+    menu:
+      menu_1: Le téléphone
+      menu_2: Son usure
+      menu_3: L'annonce
+      menu_4: Informations personelles
+  select:
+    loading: Chargement en cours...

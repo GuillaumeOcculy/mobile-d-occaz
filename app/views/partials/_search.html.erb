@@ -1,0 +1,13 @@
+<div class="cl-5">
+	<div class="input">
+		<%= text_field_tag :q, params[:q], class: 'icon-search icon-phone', placeholder: "Ex: iPhone 5" %>
+	</div>
+</div>
+<div class="cl-5">
+	<div class="input autocomplete-place-geocode">
+		<%= place_field_tag :place, params[:place], class: 'icon-search icon-location' %>
+	</div>
+</div>
+<div class="cl-2">
+	<button type="submit" class="button orange-reverse">Rechercher</button>
+</div>

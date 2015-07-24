@@ -1,0 +1,158 @@
+<div id="hero" class="min">
+	<div id="map-container"></div>
+	<div class="filter">
+		<div class="container">
+			<div class="row">
+				<div class="cl-12">
+					<% if params[:return_to] %>
+						<%= link_to 'Retour à la recherche', params[:return_to], title: 'Retour à la recherche' %>
+					<% else %>
+						<%= link_to 'Retour à l\'accueil', root_path, title: 'Retour à l\'accueil' %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="post" itemscope itemtype="http://schema.org/Product">
+	
+	<% if @medias.first %>
+		<meta itemprop="image" content="<%= @medias.first.image.url(:original) %>"
+		 />
+	<% end %>
+
+	<div class="container">
+		<div class="row">
+			
+			<% if @medias.size > 0 %>
+
+				<div class="cl-5">
+					<div class="images">
+						<div class="big">
+							<div></div>
+						</div>
+					</div>
+				</div>
+				<div class="push-cl-1 cl-4">
+
+			<% else %>
+
+				<div class="cl-6">
+					<div class="description">
+						<% if !@post.content.blank? %>
+							<h4>Description:</h4>
+							<%= simple_format @post.content, itemprop: "description" %>
+						<% end %>
+					</div>
+				</div>
+				<div class="cl-4">
+
+			<% end %>
+
+				<div class="details">
+					<h1 class="center">
+						<meta itemprop="manufacturer" content="<%= @post.brand.name %>" />
+						<span itemprop="brand"><%= @post.brand.name %></span> - 
+						<span itemprop="name"><%= @post.phone_name %></span>
+					</h1>
+
+					<div class="space"></div>
+
+					<% if @post.color %>
+					<div>
+						Couleur
+						<span itemprop="color"><%= @post.color.name %></span>
+					</div>
+					<% else %>
+						<div>&nbsp;</div>
+					<% end %>
+					<div>
+						État
+						<span><%= @post.state.name %></span>
+					</div>
+					<div>
+						Opérateur
+						<span><%= @post.carrier.name %></span>
+					</div>
+					<div>
+						Vendu avec son chargeur
+						<span><%= print_boolean @post.have_charger %></span>
+					</div>
+					<div>
+						Sous garantie
+						<span><%= print_boolean @post.is_warranty %></span>
+					</div>
+					<div>
+						Envoi par colis
+						<span><%= print_boolean @post.is_sendable %></span>
+					</div>
+					<% if @post.memory %>
+						<div>
+							Stockage
+							<span><%= @post.memory.name %></span>
+						</div>
+					<% else %>
+						<div>&nbsp;</div>
+					<% end %>
+					
+					<div class="separator"></div>
+
+					<div class="amount" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+						<meta itemprop="priceCurrency" content="EUR">
+						<span itemprop="price" class="price"><%= print_amount @post.amount %></span>
+
+						<% if @post.amount_negotiable %>
+							<br>
+							<span class="negotiable">(négociable)</span>
+						<% end %>
+					</div>
+				</div>
+			</div>
+			<div class="cl-2">
+				<div class="contact">
+					<%= link_to 'Contact', contact_post_path(@post, return_to: params[:return_to]), class: 'button orange-reverse', title: 'Contact' %>
+
+					<div class="space"></div>
+
+					<span class="icon-post icon-name"><%= @post.user_name %></span>
+					<span class="icon-post icon-location"><%= @post.place %></span>
+					
+					<% if !@post.user_phone.blank? %>
+						<span class="icon-post icon-phone"><%= @post.user_phone %></span>
+					<% end %>
+
+					<span>&nbsp;</span>
+					<span class="icon-post icon-date">Mise en ligne le <%= l @post.created_at.to_date %></span>
+				</div>
+			</div>
+		</div>
+
+		<% if @medias.size > 0 %>
+
+			<div class="row">
+				<div class="cl-6">
+					<div class="images">
+						<div class="thumb">
+							<% for media in @post.medias.to_a %>
+								<%= link_to media.image.url(:medium), style: "background-image: url(#{media.image.url(:thumb)})", target: '_blank', title: 'Afficher l\'image' do %>
+									<div class="filter"></div>
+								<% end %>
+							<% end %>
+						</div>
+					</div>
+				</div>
+				<div class="cl-6">
+					<div class="description">
+						<% if !@post.content.blank? %>
+							<h4>Description:</h4>
+							<%= simple_format @post.content, itemprop: "description" %>
+						<% end %>
+					</div>
+				</div>
+			</div>
+
+		<% end %>
+
+	</div>
+</div>

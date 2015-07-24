@@ -1,0 +1,41 @@
+<div class="container">
+	<div class="row">
+		<div class="cl-12">
+			<h2 class="center">
+				<%= t '.title' %>
+			</h2>
+		</div>
+
+		<% for post in @posts %>
+			<div class="cl-4">
+				<div class="post" itemscope itemtype="http://schema.org/Product">
+					<meta itemprop="brand" content="<%= post.brand.name %>" />
+					<meta itemprop="manufacturer" content="<%= post.brand.name %>" />
+					<meta itemprop="name" content="<%= post.phone_name %>" />
+					<meta itemprop="color" content="<%= post.color.name %>" />
+					
+					<% if post.medias.first %>
+						<meta itemprop="image" content="<%= post.medias.first.image.url(:original) %>"
+						 />
+					<% end %>
+	
+					<%= link_to post_path(post), title: post.cached_name, itemprop: :url do %>
+						<div class="image" style="background-image: url(<%= post.medias.first.image.url(:medium) %>);">
+							<div class="filter"></div>
+							<div class="amount" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+								<meta itemprop="priceCurrency" content="EUR">
+								<span itemprop="price"><%= print_amount post.amount %></span>
+							</div>
+						</div>
+						<div class="center">
+							<div class="phone">
+								<span><%= post.cached_name %></span>,
+								<span><%= post.place_city %></span>
+							</div>
+						</div>
+					<% end %>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

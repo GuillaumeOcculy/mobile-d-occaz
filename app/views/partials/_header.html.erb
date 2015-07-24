@@ -1,0 +1,27 @@
+<div id="header">
+	<div class="container">
+		<div class="row">
+			<div class="cl-5">
+				<div class="logo">
+					<%= link_to root_path, title: "Mobile d'occaz" do %>
+						<span class="icon-logo"></span>
+						<span>Mobile d'occaz</span>
+					<% end %>
+				</div>
+			</div>
+			<div class="cl-7">
+				<ul>
+					<li>
+						<%= link_to 'Accueil', root_path, title: 'Accueil' %>
+					</li>
+					<li>
+						<%= link_to 'Aide', faq_path, title: 'Aide' %>
+					</li>
+					<li>
+						<%= link_to 'Vendre mon téléphone', new_post_path, id: 'new_post', title: 'Créer une annonce' %>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

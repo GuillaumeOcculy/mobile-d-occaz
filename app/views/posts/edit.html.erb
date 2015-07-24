@@ -1,0 +1,96 @@
+<%= content_for :javascript do %>
+	<%= javascript_include_goole_maps %>
+<% end %>
+
+<div id="hero" class="min">
+	<div id="map-container"></div>
+	<div class="filter">
+		<div class="container">
+			<div class="row">
+				<div class="cl-12">
+					<h1><%= t '.title' %></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render 'menu' %>
+
+<div class="container jt-panel-conatiner new-post-form">
+	<%= custom_form_for @post, url: post_path(@post) do |f| %>
+		
+		<div class="jt-panel">
+			<%= f.select :brand_id, options_from_collection_for_select(Phone::Brand.all, :id, :name, @post.brand_id), { include_blank: true } %>
+	
+			<%= f.hidden_field :phone_id %>			
+			<%= f.text_field :phone_name %>
+
+			<%= f.select :memory_id, options_from_collection_for_select(Phone::Memory.all, :id, :name, @post.memory_id), { include_blank: "Je ne sais pas" }, required: false %>
+
+			<%= f.select :color_id, options_from_collection_for_select(Phone::Color.all, :id, :name, @post.color_id), { include_blank: true } %>
+			<%= f.select :carrier_id, options_from_collection_for_select(Phone::Carrier.all, :id, :name, @post.carrier_id), { include_blank: true } %>
+
+			<%= f.number_field :imei, required: false, info: 'optionnel', placeholder: "*#06# sur votre téléphone pour obtenir un numéro à 15 chiffres", class: 'jt-validation-imei', max: 999999999999999, autocomplete: :off %>
+
+		</div>
+
+		<div class="jt-panel">
+			<%= f.select :state_id, options_from_collection_for_select(Post::State.all, :id, :name, @post.state_id) %>
+			<%= f.select :have_charger, options_for_select_boolean(@post.have_charger), { include_blank: true } %>
+			<%= f.select :is_warranty, options_for_select_boolean(@post.is_warranty), { include_blank: true } %>
+		</div>
+
+		<div class="jt-panel">
+			<%= f.number_field :amount, info: 'euro', max: 9999 %>
+			<%= f.select :amount_negotiable, options_for_select_boolean(@post.amount_negotiable), { include_blank: false } %>
+			<%= f.text_area :content, required: false, info: 'optionnel' %>
+
+			<%= f.fields_for :medias do |g| %>
+				<% if g.object && g.object.id %>
+
+					<div class="input-file jt-upload-remove jt-media-id-<%= g.object.id %>" style="background-image: url(<%= g.object.image.url(:thumb) %>)">
+						<input type="file" accept="image/bmp,image/gif,image/png,image/jpeg,image/x-ms-bmp"/>
+						<a href="#" class="icon-remove">Supprimer</a>
+					</div>
+
+				<% else %>
+
+					<div class="input-file jt-upload-ready">
+						<input type="file" accept="image/bmp,image/gif,image/png,image/jpeg,image/x-ms-bmp"/>
+						<a href="#">Ajouter une photo</a>
+					</div>
+
+				<% end %>
+			<% end %>
+		</div>
+
+		<div class="jt-panel">
+			<%= f.text_field :user_name, info: 'affiché sur l\'annonce' %>
+			<%= f.email_field :user_email, info: 'non visible sur l\'annonce' %>
+			<%= f.text_field :user_phone, required: false, info: 'optionnel' %>
+
+			<div class="autocomplete-place-cities">
+				<%= f.place_field :place, placeholder: "Indiquez le nom de votre ville" %>
+
+				<div class="row hidden">
+					<div class="push-cl-3 cl-6">
+						<div id="input-map-container"></div>
+					</div>
+				</div>
+			</div>
+			
+			<%= f.select :is_sendable, options_for_select_boolean(@post.is_sendable), { include_blank: false } %>
+
+			<%= f.submit %>
+		</div>
+
+		<div class="row">
+			<div class="cl-10"></div>
+			<div class="cl-2">
+				<a class="button orange jt-panel-next right" href="#">Suivant</a>
+			</div>
+		</div>
+
+	<% end %>
+</div>

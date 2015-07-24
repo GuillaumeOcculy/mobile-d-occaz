@@ -1,0 +1,20 @@
+@include font-face('ARS Maquette Pro', font-files(
+	'fonts/ARSMaquettePro.woff',
+	'fonts/ARSMaquettePro.ttf',
+	'fonts/ARSMaquettePro.svg',
+	'fonts/ARSMaquettePro.eot'
+	), 'fonts/ARSMaquettePro.eot');
+
+@include font-face('ARS Maquette Pro Medium', font-files(
+	'fonts/ARSMaquettePro-Medium.woff',
+	'fonts/ARSMaquettePro-Medium.ttf',
+	'fonts/ARSMaquettePro-Medium.svg',
+	'fonts/ARSMaquettePro-Medium.eot'
+	), 'fonts/ARSMaquettePro-Medium.eot', 500);
+
+@include font-face('Montserrat', font-files(
+	'fonts/montserrat-bold.woff',
+	'fonts/montserrat-bold.ttf',
+	'fonts/montserrat-bold.svg',
+	'fonts/montserrat-bold.eot'
+	), 'fonts/montserrat-bold.eot', bold);

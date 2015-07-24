@@ -1,0 +1,19 @@
+fr:
+  meta:
+    keywords:
+      global: "mobile d'occaz, téléphone, occasion, mobile, mobile d'occas, mobile d'occasion, téléphone d'occasion"
+    description: 
+      global: "Tu cherches un nouveau téléphone ou tu veux vendre le tiens, dépose une annonce gratuitement ou trouve le mobile de ton choix!"
+      posts:
+        edit: Venez ici déposer votre annonce pour vendre votre téléphone rapidement.
+        contact: "%{content}"
+        show: "%{content}"
+    title: 
+      global: Mobile d'occaz
+      home:
+        contact: Contactez-nous
+        search: Recherche
+      posts:
+        edit: Nouvelle annonce
+        contact: "Contact - %{name}"
+        show: "%{name}"

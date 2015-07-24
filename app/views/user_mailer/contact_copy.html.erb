@@ -1,0 +1,12 @@
+<pre>
+Bonjour,
+vous avez reçu un message de <%= @message.name %>.
+Vous pouvez le joindre par:
+- email: <%= @message.email %>
+<% if !@message.phone.blank? %>- téléphone: <%= @message.phone %><% end %>
+
+<%= @message.content %>
+
+Mobile d'occaz
+<%= link_to root_url, root_url %>
+</pre>

@@ -1,0 +1,33 @@
+@mixin no-select-appareance {
+  -webkit-appearance: none;
+     -moz-appearance: window;
+       -o-appearance: none;
+          appearance: none;
+}
+
+$color-background: #f6f6f8;
+$color-border: #dce0e0;
+$color-border-transparent: rgba(220, 224, 224, 0.3);
+$color-input-red: #f9651d;
+$color-input-green: #50b91e;
+
+$color-black: #14212a;
+$color-black-transparent: rgba(20, 33, 42, 0.7);
+$color-black-search: #373F44;
+
+$color-orange: #fc6120;
+$color-orange-transparent: rgba(252,97,32,0.5);
+
+$color-grey-light: #919497;
+$color-grey-dark: #565a5c;
+
+$color-blue: #69c1ed;
+
+$color-red-error: #c52f24;
+
+$font-title: 'ARS Maquette Pro';
+$font-title-bold: 'ARS Maquette Pro Medium';
+$font-content: 'Montserrat';
+
+$button-height: 56px;
+$content-min-height: 600px;

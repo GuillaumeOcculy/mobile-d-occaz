@@ -1,0 +1,23 @@
+.flash{
+	text-align: center;
+	padding: 10px 0;
+
+	font-family: $font-title;
+
+	a{
+		padding-right: 10px;
+		float: right;
+
+		&:hover{
+			text-decoration: underline;
+		}
+	}
+
+	&.notice{
+		background-color: $color-blue;
+	}
+
+	&.error{
+		background-color: $color-red-error;
+	}
+}

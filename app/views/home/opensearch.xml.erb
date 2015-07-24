@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+	<ShortName>Mobile d'occaz</ShortName>
+	<Description>Rechercher un téléphone</Description>
+	<Image type="image/x-icon"><%= root_url %>favicon.ico</Image>
+	<Language>fr</Language>
+	<InputEncoding>UTF-8</InputEncoding>
+	<Url type="text/html" template="<%= search_url %>?q={searchTerms}&amp;page={startPage?}"/>
+	<Url type="application/x-suggestions+json" template="<%= suggest_url %>?q={searchTerms}"/>
+</OpenSearchDescription>

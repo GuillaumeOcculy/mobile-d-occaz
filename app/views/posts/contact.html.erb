@@ -1,0 +1,30 @@
+<div id="hero" class="min">
+	<div id="map-container"></div>
+	<div class="filter">
+		<div class="container">
+			<div class="row">
+				<div class="cl-12">
+					<%= link_to "Retour à l'annonce", post_path(@post, return_to: params[:return_to]) %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="post-contact" class="new-post-form">
+	<div class="container">
+		<div class="center intro">
+			<%= t '.content', name: @post.user_name, product: @post.cached_name %>
+		</div>
+
+		<%= custom_form_for @post_message, url: contact_post_path(@post) do |f| %>
+			<%= f.text_field :name %>
+			<%= f.text_field :email %>
+			<%= f.text_field :phone, required: false, info: 'optionnel' %>
+			<%= f.text_area :content %>
+			<%= f.select :want_copy, options_for_select_boolean(@post_message.want_copy), { include_blank: false } %>
+
+			<%= f.submit 'Envoyer' %>
+		<% end %>
+	</div>
+</div>

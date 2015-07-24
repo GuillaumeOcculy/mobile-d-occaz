@@ -1,0 +1,14 @@
+<pre>
+Bonjour,
+vous avez reçu un message de <%= @message.name %> pour votre annonce "<%= @post.cached_name %>".
+Vous pouvez le joindre par:
+- email: <%= @message.email %>
+<% if !@message.phone.blank? %>- téléphone: <%= @message.phone %><% end %>
+
+<%= @message.content %>
+
+Merci et à bientôt.
+
+Mobile d'occaz
+<%= link_to root_url, root_url %>
+</pre>

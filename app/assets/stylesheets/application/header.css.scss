@@ -1,0 +1,85 @@
+#header{
+	$local-height: 100px;
+
+	height: $local-height;
+	background: white;
+	border-bottom: 1px solid $color-border;
+
+	a{
+		display: inline-block;
+	}
+
+	.logo{
+		margin-top: 20px;
+		
+		.icon-logo{
+			display: inline-block;
+			float: left;
+
+			width: 52px;
+			margin-left: 0;
+
+			@include border-radius(5px);
+			background: inline-image('application/logo.png') no-repeat;
+			background-size: cover;
+
+			@include box-shadow(1px 1px 1px rgba(0,0,0,0.2));
+		}
+
+		span{
+			display: inline-block;
+
+			line-height: 52px;
+			height: 52px;
+			margin-left: 20px;
+
+			color: $color-orange;
+			font-family: $font-content;
+			font-size: 22px;
+		}
+
+	}
+
+	ul{
+		float: right;
+
+		li{
+			display: inline-block;
+			line-height: $local-height;
+			margin-left: 50px;
+		}
+
+		li a{
+			line-height: 39px; // height - 1
+			height: 40px;
+
+			color: $color-grey-light;
+			font-size: 15px;
+			font-weight: bold;
+			text-transform: uppercase;
+
+			&:hover{
+				color: $color-black;
+			}
+		}
+
+		li a#new_post{
+			color: white;
+			border: 1px solid white;
+			background-color: $color-orange;
+
+			@include border-radius(4px);
+			padding: 0 14px;
+
+			@include text-shadow(1px 1px 1px rgba(0,0,0,0.1));
+			@include transition(0.2s);	
+
+			&:hover{
+				color: $color-orange;
+				border: 1px solid $color-orange;
+				background-color: white;
+			}		
+		}
+
+	}
+}

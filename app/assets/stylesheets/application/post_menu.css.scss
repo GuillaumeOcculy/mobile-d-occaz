@@ -1,0 +1,26 @@
+#post_menu{
+	background: white;
+	border-bottom: 1px solid $color-border;
+
+	ul{
+		display: table;
+		table-layout: fixed;
+	}
+
+	ul li{
+		display: table-cell;
+		width: 1%;
+		text-align: center;
+		line-height: 78px;
+	}
+
+	a{
+		color: $color-grey-light;
+		display: inline-block;
+		width: 100%;
+	}
+
+	a:hover,a.active{
+		color: $color-black;
+	}
+}

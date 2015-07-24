@@ -1,0 +1,73 @@
+<div class="post" itemscope itemtype="http://schema.org/Product">
+	<meta itemprop="brand" content="<%= post.brand.name %>" />
+	<meta itemprop="manufacturer" content="<%= post.brand.name %>" />
+
+	<% if post.medias.first %>
+		<meta itemprop="image" content="<%= post.medias.first.image.url(:original) %>"
+		 />
+	<% end %>
+
+	<%= link_to post_path(post, return_to: request.url), title: post.cached_name, itemprop: :url do %>
+
+		<div class="left">
+			<% if post.medias.first
+				post_url = post.medias.first.image.url(:medium)
+			else
+				post_url = ""
+			end %>
+			<div class="image" style="background-image: url(<%= post_url %>);"></div>
+		</div>
+
+		<div class="details">
+			<div class="right amount" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+				<meta itemprop="priceCurrency" content="EUR">
+				<h3 itemprop="price"><%= print_amount post.amount %></h3>
+			</div>
+			<div class="name">
+				<h3 itemprop="name"><%= post.phone_name.upcase %></h3>
+			</div>
+			
+			<div class="separator"></div>
+
+			<% if post.color %>
+			<div>
+				Couleur
+				<span itemprop="color"><%= post.color.name %></span>
+			</div>
+			<% end %>
+			<div>
+				État
+				<span><%= post.state.name %></span>
+			</div>
+			<div>
+				Opérateur
+				<span><%= post.carrier.name %></span>
+			</div>
+			<div>
+				Vendu avec son chargeur
+				<span><%= print_boolean post.have_charger %></span>
+			</div>
+			<div>
+				Sous garantie
+				<span><%= print_boolean post.is_warranty %></span>
+			</div>
+			<% if post.memory %>
+			<div>
+				Stockage
+				<span><%= post.memory.name %></span>
+			</div>
+			<% end %>
+			<div>
+				Envoi par colis
+				<span><%= print_boolean post.is_sendable %></span>
+			</div>
+
+		</div>
+
+		<div class="footer">
+			<span class="right"><%= post.place %></span>
+			Mise en ligne le <%= l post.created_at.to_date %>
+		</div>
+
+	<% end %>
+</div>

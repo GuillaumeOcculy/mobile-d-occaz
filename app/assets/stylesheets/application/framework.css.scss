@@ -1,0 +1,151 @@
+body{
+	font-family: $font-content;
+	font-size: 15px;
+	line-height: 20px;
+	background: $color-background;
+
+	color: white;
+}
+
+*,
+*:after,
+*:before {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+:focus {
+	outline: none;
+}
+
+// Firefox
+input,select{
+	outline: none;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  @include appearance(none);
+  margin: 0;
+}
+
+.container{
+	width: 1200px;
+	margin: 0 auto;
+	position: relative;
+}
+
+.row {position:relative; margin-left:-15px;}
+.row:after{
+	clear: both;
+	display: table;
+	line-height: 0;
+	content: "";
+}
+.cl-1, .cl-2, .cl-3, .cl-4, .cl-5, .cl-6, .cl-7, .cl-8, .cl-9, .cl-10, .cl-11, .cl-12{
+	height:auto;
+	float: left;
+	padding-left: 15px;
+	min-height:1px;
+}
+.cl-1{width: 8.33%;}
+.cl-2{width: 16.66%;}
+.cl-3{width: 25%;}
+.cl-4{width: 33.33%;}
+.cl-5{width: 41.66%;}
+.cl-6{width: 50%;}
+.cl-7{width: 58.33%;}
+.cl-8{width: 66.66%;}
+.cl-9{width: 75%;}
+.cl-10{width: 83.33%;}
+.cl-11{width: 91.66%;}
+.cl-12{width: 100%;}
+
+.push-cl-1{margin-left: 8.33%;}
+.push-cl-2{margin-left: 16.66%;}
+.push-cl-3{margin-left: 25%;}
+.push-cl-4{margin-left: 33.33%;}
+.push-cl-5{margin-left: 41.66%;}
+.push-cl-6{margin-left: 50%;}
+.push-cl-7{margin-left: 58.33%;}
+.push-cl-8{margin-left: 66.66%;}
+.push-cl-9{margin-left: 75%;}
+.push-cl-10{margin-left: 83.33%;}
+.push-cl-11{margin-left: 91.66%;}
+.push-cl-12{margin-left: 100%;}
+
+.clear{clear: both;}
+.hidden{display: none!important;}
+.right{float: right;}
+.left{float: left;}
+.center{text-align:center;}
+
+a{
+	font-family: $font-title;
+	text-decoration: none;
+	color: white;
+}
+
+h1{
+	font-family: $font-title;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+h2{
+	font-family: $font-title;
+	font-size: 16px;
+	text-transform: uppercase;
+}
+
+.button{
+	font-size: 16px;
+	text-transform: uppercase;
+	text-align: center;
+	color: white;
+	display: inline-block;
+	height: $button-height;
+	width: 100%;
+
+	border: none;
+
+	@include border-radius(3px);
+
+	cursor: pointer;
+}
+
+a.button{
+	line-height: $button-height - 1;
+}
+
+button.button{
+	line-height: $button-height - 4;
+}
+
+span.orange{
+	color: $color-orange;
+}
+
+button,a{
+	&.orange, &.orange-reverse.active, &.orange-reverse:hover{
+		background-color: $color-orange-transparent;
+	}
+
+	&.orange.active, &.orange:hover, &.orange-reverse{
+		background-color: $color-orange;
+	}	
+}
+
+@media (max-width: 1199px) {
+	
+	.container{
+		width: auto;
+		margin: 0 10px;
+	}
+
+}

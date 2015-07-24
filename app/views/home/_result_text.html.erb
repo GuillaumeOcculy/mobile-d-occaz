@@ -1,0 +1,5 @@
+<% if params[:place] && !params[:place][:city].blank? %>
+	<%= @posts_count %> Résultats sur <%= params[:place][:city] %>
+<% else %>
+	<%= @posts_count %> Résultats
+<% end %>

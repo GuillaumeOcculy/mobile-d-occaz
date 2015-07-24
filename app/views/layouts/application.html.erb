@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="fr" lang="fr" dir="ltr">
+<head prefix="og: http://ogp.me/ns/website#">
+	<meta charset="utf-8">
+
+<%= render '/partials/graph' %>
+
+	<%= stylesheet_link_tag 'application', media: 'all' %>
+	<%= csrf_meta_tags %>
+
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+	<link rel="shortcut icon" type="image/x-icon" href="<%= asset_url 'favicon.ico' %>" /> 
+	<link rel="icon" type="image/x-icon" href="<%= asset_url 'favicon.ico' %>" />
+	<link rel="apple-itouch-icon" href="<%= asset_url 'apple-touch-icon.png' %>" />
+
+    <link rel="dns-prefetch" href="//static.mobile-d-occaz.fr">
+    <link rel="dns-prefetch" href="//cdn.mobile-d-occaz.fr">
+
+    <link rel="dns-prefetch" href="//maps.googleapis.com">
+    <link rel="dns-prefetch" href="//maps.gstatic.com">
+    <link rel="dns-prefetch" href="//csi.gstatic.com">
+    <link rel="dns-prefetch" href="//mts0.googleapis.com">
+    <link rel="dns-prefetch" href="//mts1.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+
+    <link rel="dns-prefetch" href="//www.google-analytics.com">
+
+    <link rel="dns-prefetch" href="//www.geoplugin.net">
+
+    <link rel="search" type="application/opensearchdescription+xml" href="<%= opensearch_url(format: :xml) %>" title="Mobile d'occaz" />
+
+	<%= render '/partials/meta' %>
+</head>
+<body>
+
+	<% flash.each do |name, msg| %>
+		<div class="flash <%= name%>">
+			<%= msg %>
+			<a class="close" href="#">Fermer</a>
+		</div>
+	<% end %>
+
+	<%= render '/partials/header' %>
+
+	<%= yield %>
+
+	<%= render '/partials/footer' %>
+
+	<%= javascript_include_tag 'application' %>
+	<%= javascript_include_tag 'async', async: :true %>
+	<%= yield :javascript %>
+
+</body>
+</html>

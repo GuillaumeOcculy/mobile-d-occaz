@@ -1,0 +1,167 @@
+$input-font-size: 15px;
+$input-height: 70px;
+$input-background-color: #fff;
+
+.new-post-form{
+	
+	font-family: $font-title;
+	font-size: $input-font-size;
+	color: $color-grey-dark;
+
+	.row{
+		margin-top: 24px;
+	}
+
+	.row.other{
+		margin-top: 5px;
+	}
+
+	label{
+		vertical-align: middle;
+		display: table-cell;
+		height: $input-height;
+		text-align: right;
+		font-family: $font-title;
+	}
+
+	.input{
+		background-color: $input-background-color;
+		border: 1px solid $color-border;	
+		@include border-radius(2px);
+		position: relative;
+
+		input, select, textarea{ 
+			border: none;
+			background-color: $input-background-color;
+
+			font-family: $font-title;
+			font-size: $input-font-size;
+			color: $color-grey-dark;
+
+			padding: 0 24px;
+			height: $input-height;
+			width: 100%;
+		}
+
+		select{
+			cursor: pointer;
+			@include no-select-appareance;
+
+			background-image: inline-image('application/icon/arrow.png');
+			background-repeat: no-repeat;
+			// background-position: right center;
+			background-position: 555px 30px;
+		}
+
+		textarea{
+			height: 3 * $input-height;
+			padding-top: 24px;
+			padding-bottom: 24px;
+			resize: none;
+			line-height: 24px;
+		}
+
+		.info{
+			color: $color-grey-light;
+			border: 1px solid $color-border;
+
+			position: absolute;
+			top: -1px;
+			right: -1px;
+
+			padding: 2px 7px;
+			font-size: 14px;
+		}
+
+
+		.input-file{
+			$local-height: 180px;
+			float: left;
+
+			width: 33.333%;
+			background-color: $color-background;
+
+			background-position: center;
+			background-repeat: no-repeat;
+			@include background-size(auto $local-height);
+
+			input[type="file"]{
+				display: block;
+				position:absolute;
+				top: 0;
+				right: 0;
+				height: 0;
+				width: 0;
+				@include opacity(0);
+			}
+
+			a{
+				text-align: center;
+				display: block;
+				height: $local-height;
+				line-height: $local-height;
+
+				color: $color-grey-dark;
+				color: $color-grey-light;
+				padding-top: 18px;
+
+				background-image: inline-image('application/icon/camera.png');
+				background-repeat: no-repeat;
+				background-position: center 40px;
+				@include background-size(60px);
+
+				&:hover{
+					color: $color-black;
+				}
+			}
+
+			a.icon-remove{
+				background-image: none;
+				color: transparent;
+
+				&:hover{
+					color: $color-black;
+					background-image: inline-image('application/icon/cross.png');
+					@include background-size(45px);
+				}
+			}
+		}
+	}
+
+	.input.error{
+		border-color: $color-input-red;
+	}
+
+	.input.success{
+		border-color: $color-input-green;
+	}
+
+	.error-message{
+		// line-height: $input-height;
+		color: $color-input-red;
+
+		vertical-align: middle;
+		display: table-cell;
+		height: $input-height;
+	}
+
+	.success-message{
+		height: $input-height;
+		line-height: $input-height;
+		background: inline-image('application/icon/success.png') no-repeat;
+		background-position: left center;
+	}
+
+	.button{
+		margin-top: 50px;
+		margin-bottom: 50px;
+		
+		font-family: "ARS Maquette Pro";
+		@include text-shadow(1px 1px 1px rgba(0,0,0,0.1));
+	}
+
+	#input-map-container{
+		width: 100%;
+		height: 180px;
+	}
+}

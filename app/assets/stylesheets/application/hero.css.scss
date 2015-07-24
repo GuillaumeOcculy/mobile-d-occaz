@@ -1,0 +1,91 @@
+#hero{
+	$local-height: 520px;
+
+	height: $local-height;
+
+	border-bottom: 1px solid $color-border;
+
+	background: image-url('application/map.jpg') no-repeat center;
+
+	.filter{
+		position: relative;
+		height: 100%;
+		background: $color-black-transparent;
+		z-index: 2;
+	}
+
+	#map-container{
+		height: $local-height - 2; // - 2 sinon texte en bas depasse
+		width: 100%;
+		position: absolute;
+		z-index: 1;
+
+		a, span{
+			font-size: 10px;
+			line-height: 10px;
+			text-transform: none;
+		}
+	}
+
+	h1, a{
+		margin-top: 120px;
+		margin-bottom: 100px;
+		line-height: 28px;
+
+		font-family: $font-title;
+		font-size: 18px;
+		text-transform: uppercase;
+
+		@include text-shadow(1px 1px 1px rgba(0,0,0,0.2));
+	}
+
+	h1{
+		text-align: center;
+	}
+}
+
+#hero.min{
+	$local-height: 120px;
+
+	height: $local-height;
+
+	#map-container{
+		height: $local-height;
+	}
+
+	h1, a{
+		margin-top: 0;
+		margin-bottom: 0;
+		line-height: $local-height;
+	}
+
+	a{
+		display: inline-block;
+		background: inline-image('application/icon/arrow-circle.png') no-repeat left center;
+		@include background-size(30px);
+		padding-left: 50px;
+	}
+
+	a:hover{
+		text-decoration: underline;
+	}
+}
+
+#hero.middle{
+	$local-height: 240px;
+
+	height: $local-height;
+
+	#map-container{
+		height: $local-height - 2; // - 2 sinon texte en bas depasse
+	}
+
+	#home-search{
+		margin-top: 54px;
+	}
+
+	h1{
+		margin-top: 35px;
+		margin-bottom: 0;
+	}
+}

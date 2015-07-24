@@ -1,0 +1,107 @@
+#home-search{
+	$home-height: 74px;
+	$home-padding: 7px;
+
+	height: $home-height;
+	background-color: $color-black-search;
+	@include border-radius(4px);
+	padding: $home-padding;
+
+	.input{
+		background-color: white;
+		@include border-radius(3px);
+	}
+
+	input{
+		width: 100%;
+		height: ($home-height - 2 * $home-padding);
+
+		border: none;
+		@include border-radius(3px);
+		background-color: white;
+
+		padding-left: 30px + 24px;
+		padding-right: 24px;
+		font-family: $font-title;
+		font-size: $input-font-size;
+
+		@include box-shadow(-1px 1px 2px 1px rgba(0,0,0,0.1));
+	}
+
+	.button{
+		font-family: $font-title;
+		font-size: 17px;
+		line-height: ($home-height - 2 * $home-padding) - 3px;
+		height: ($home-height - 2 * $home-padding);
+
+		@include text-shadow(1px 1px 1px rgba(0,0,0,0.2));
+		@include box-shadow(-1px 1px 2px 1px rgba(0,0,0,0.1));
+	}
+}
+
+#home{
+	background: white;
+	padding-bottom: 100px;
+
+	color: $color-black;
+
+	h2{
+		font-size: 32px;
+
+		padding-top: 100px;
+		padding-bottom: 50px;
+	}
+
+	.post{
+		$local-height: 290px;
+		
+		height: $local-height;
+		margin-top: 50px;
+
+		.image{
+			background: no-repeat center center;
+			width: 100%;
+			height: $local-height;
+			@include background-size(auto $local-height);
+
+			position: relative;
+
+			.filter{
+				width: 100%;
+				height: 100%;
+
+				background-color: #000;
+
+				@include opacity(0);
+				@include transition(opacity 0.2s);
+
+				&:hover{
+					@include opacity(0.15);
+				}
+			}
+
+			.amount{
+				position: absolute;
+				right: 0;
+				bottom: 20px;
+				padding: 6px 16px;
+				@include border-radius(3px);
+
+				background-color: $color-orange;
+				color: white;
+				@include text-shadow(1px 1px 1px rgba(0,0,0,0.1));
+			}
+		}
+
+		.phone{
+			color: $color-grey-light;
+		}
+	}
+
+	.post:hover{
+		.phone{
+			color: $color-black;
+		}
+	}
+
+}

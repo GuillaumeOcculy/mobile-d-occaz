@@ -1,0 +1,13 @@
+<div class="search-filter">
+
+	<h4><%= title %></h4>
+
+	<% for obj in  collection %>
+		<div class="checkbox">
+			<label>
+				<%= check_box_tag attr + '[]', obj[:id], params[attr] && params[attr].include?(obj[:id].to_s) %> <%= obj[:name] %>
+			</label>
+		</div>
+	<% end %>
+
+</div>

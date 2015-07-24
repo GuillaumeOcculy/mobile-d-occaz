@@ -1,0 +1,74 @@
+<%= content_for :javascript do %>
+	<%= javascript_include_tag 'slider' %>
+	<%= javascript_include_goole_maps %>
+<% end %>
+
+<%= form_tag search_path(ajax: 1), method: :get, remote: true, class: 'jt-auto-submit' do %>
+
+<div id="hero" class="middle">
+	<div id="map-container"></div>
+	<div class="filter">
+		<div class="container">
+			<div class="row">
+				<div class="cl-12">
+					<div id="home-search">
+						<div class="row">
+							<%= render '/partials/search' %>								
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="push-cl-3 cl-6">
+					<h1>
+						<%= render 'result_text' %>
+					</h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="search">
+	<div class="container">
+		<div class="row">
+			<div class="push-cl-1 cl-3">
+				<div class="search-filters">
+
+					<div class="search-filter">
+
+						<h4>Distance</h4>
+
+						<div class="slider blue"></div>
+						<span class="slider-value"></span>
+						<%= hidden_field_tag :radius, params[:radius] %>
+
+					</div>
+
+					<div class="search-filter">
+
+						<h4>Prix</h4>
+
+						<div class="slider orange"></div>
+						<span class="slider-value"></span>
+						<%= hidden_field_tag :amount, params[:amount] %>
+
+					</div>
+
+					<%= render 'checkbox', collection: Phone::Brand.all, attr: 'brand_ids', title: 'Marques' %>
+					<% render 'checkbox', collection: Phone::Os.all, attr: 'os_ids', title: 'OS' %>
+					<%= render 'checkbox', collection: Phone::Color.all, attr: 'color_ids', title: 'Couleur' %>
+					<%= render 'checkbox', collection: Phone::Memory.all, attr: 'memory_ids', title: 'Capacité' %>
+					<%= render 'checkbox', collection: Post::State.all, attr: 'state_ids', title: 'État' %>
+					<%= render 'checkbox', collection: Phone::Carrier.all, attr: 'carrier_ids', title: 'Opérateur' %>
+					<% render 'checkbox', collection: Phone::Phone::FEATURES.map {|x| {id: x, name: x} }, attr: 'features', title: 'Options' %>
+				</div>
+			</div>
+			<div class="cl-7 search-results">
+				<%= render 'results' %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<% end %>

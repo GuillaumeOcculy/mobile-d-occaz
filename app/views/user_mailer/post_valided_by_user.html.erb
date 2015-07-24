@@ -1,0 +1,14 @@
+<pre>
+Bonjour,
+votre annonce "<%= @post.cached_name %>" vient d'être publié. Elle restera en ligne pendant 2 mois.
+Vous pouvez accéder à votre annonce avec le lien ci-dessous:
+<%= link_to post_url(@post), post_url(@post) %>
+
+Pour supprimer votre annonce vous pouvez cliquez sur le lien ci-dessous:
+<%= link_to delete_post_url(@post.token), delete_post_url(@post.token) %>
+
+Merci et à bientôt.
+
+Mobile d'occaz
+<%= link_to root_url, root_url %>
+</pre>

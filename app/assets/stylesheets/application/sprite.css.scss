@@ -1,0 +1,46 @@
+.icon-footer{
+	background-image: inline-image('application/icon-footer.png');
+
+	background-size: 100px 17.5px;
+	background-repeat: no-repeat;
+
+	&.icon-facebook { background-position: 8px 7px; }
+	&.icon-twitter { background-position: -74px 8px; }
+	&.icon-linkedin { background-position: -46px 7px; }
+	&.icon-google { background-position: -17px 8px; }
+}
+
+.icon-search{
+	@include background-size(30px);
+	background-repeat: no-repeat;
+	background-position: 10px center;
+
+	&.icon-phone{
+		background-image: inline-image('application/icon/phone.png');
+	}
+	&.icon-location{
+		background-image: inline-image('application/icon/location.png');
+	}
+}
+
+.icon-post{
+	@include background-size(15px);
+	background-repeat: no-repeat;
+	background-position: left 5px;
+
+	&.icon-name{
+		background-image: inline-image('application/icon/profile.png');
+	}
+
+	&.icon-location{
+		background-image: inline-image('application/icon/location.png');
+	}
+
+	&.icon-phone{
+		background-image: inline-image('application/icon/phone2.png');
+	}
+
+	&.icon-date{
+		background-image: inline-image('application/icon/date.png');
+	}
+}

@@ -1,0 +1,65 @@
+//= require jquery-ui/slider
+
+;(function($){
+    
+	'use strict';
+    
+	$('.slider').each(function(){
+		var $container = $(this).parents('.search-filter');
+
+		var $sliderText = $container.find('.slider-value');
+		var $input = $container.find('input');
+		var inputName = $input.attr('name');
+
+		$(this).slider({
+			range: "min",
+			value: $input.val(),
+			min: minValueForSlider(inputName),
+			max: maxValueForSlider(inputName),
+			slide: update,
+			change: update
+		});
+
+		function update(event, ui){
+			$sliderText.text(textForSlider(inputName, $input.val()));
+			$input.val(ui.value);
+			$input.trigger('change');
+		}
+
+		$sliderText.text(textForSlider(inputName, $input.val()));
+	});
+
+	function minValueForSlider(inputName){
+		if(inputName == 'radius'){
+			return 5;
+		}
+
+		return 1;
+	}
+
+	function maxValueForSlider(inputName){
+		if(inputName == 'radius'){
+			return <%= SEARCH_RADIUS_MAX %>;
+		}
+
+		return <%= SEARCH_AMOUNT_MAX %>;
+	}
+
+	function textForSlider(inputName, value){
+		var result = null;
+
+		if(inputName == 'radius'){
+			result = 'La recherche s\'étend sur ' + value + ' Km';
+		}
+		else{
+			result = 'Le prix maximum est de ' + value + '€';
+		}
+
+		if(value >= maxValueForSlider(inputName)){
+			result += ' et plus.';
+		}
+
+		return result;
+	}
+
+})(jQuery);

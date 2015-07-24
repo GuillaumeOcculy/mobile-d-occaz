@@ -1,0 +1,20 @@
+<pre>
+Bonjour,
+vous avez reçu un message de <%= @message.name %> pour votre annonce "<%= @post.cached_name %>".
+Vous pouvez le joindre par:
+- email: <%= @message.email %>
+<% if !@message.phone.blank? %>- téléphone: <%= @message.phone %><% end %>
+
+<%= @message.content %>
+
+Vous pouvez accéder à votre annonce avec le lien ci-dessous:
+<%= link_to post_url(@post), post_url(@post) %>
+
+Pour supprimer votre annonce vous pouvez cliquez sur le lien ci-dessous:
+<%= link_to delete_post_url(@post.token), delete_post_url(@post.token) %>
+
+Merci et à bientôt.
+
+Mobile d'occaz
+<%= link_to root_url, root_url %>
+</pre>

@@ -1,0 +1,28 @@
+<div id="hero" class="min">
+	<div id="map-container"></div>
+	<div class="filter">
+		<div class="container">
+			<div class="row">
+				<div class="cl-12">
+					<h1><%= t '.title' %></h1>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="post-contact" class="new-post-form">
+	<div class="container">
+		<div class="center intro"><%= t '.content' %></div>
+
+		<%= custom_form_for @message, url: contact_path do |f| %>
+			<%= f.text_field :name %>
+			<%= f.text_field :email %>
+			<%= f.text_field :phone, required: false, info: 'optionnel' %>
+			<%= f.text_area :content %>
+			<%= f.select :want_copy, options_for_select_boolean(@message.want_copy), { include_blank: false } %>
+
+			<%= f.submit 'Envoyer' %>
+		<% end %>
+	</div>
+</div>

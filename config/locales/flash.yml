@@ -1,0 +1,7 @@
+fr:
+  flash:
+    error_404: La page demandé n'existe pas
+    post_expired: "Cet annonce n'est plus disponible"
+    post_created: "Votre annonce a bien été publiée"
+    post_removed: "Votre annonce a bien été supprimée"
+    message_sent: "Votre message a bien été envoyé"

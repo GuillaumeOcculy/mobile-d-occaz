@@ -1,0 +1,40 @@
+fr:
+  activemodel:
+    errors:
+      messages:
+        invalid_email_address: doit être une adresse email
+  activerecord:
+    attributes:
+      message:
+        content: Texte
+        email: Votre adresse mail
+        name: Votre nom
+        phone: Téléphone
+        want_copy: Recevoir une copie du message
+      post/message:
+        content: Texte
+        email: Votre adresse mail
+        name: Votre nom
+        phone: Téléphone
+        want_copy: Recevoir une copie du mail
+      post/post:
+        medias: Photos
+        amount: Prix de vente
+        amount_negotiable: Le prix est négociable
+        brand_id: Marque du téléphone
+        carrier_id: Votre téléphone est-il bloqué chez un opérateur?
+        color_id: Couleur
+        content: Texte de l'annonce
+        have_charger: Vendu avec son chargeur
+        imei: Certifiez que votre téléphone n'est pas volé avec son IMEI
+        is_sendable: Envoi par colis possible
+        is_warranty: Sous garantie
+        memory_id: Capacité de stockage
+        phone_id: Modèle
+        phone_name: Modèle
+        phone_name_placeholder: "Ex: iPhone 5S"
+        place: Ville
+        state_id: État du téléphone
+        user_email: Votre adresse email
+        user_name: Votre prénom
+        user_phone: Téléphone affiché sur l'annonce
